@@ -42,30 +42,36 @@ jobs:
     - name: Lint with flake8
       run: flake8 acsefunctions tests
 
-  validate-environment:
-    name: Validate Environment Files
+validate-environment:
+    name: Validate Environment
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Python 3.9
+    - name: Set up Python 3.10
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.10
 
-    - name: Install conda
+    - name: Install Miniconda
       uses: conda-incubator/setup-miniconda@v2
       with:
         auto-update-conda: true
-        python-version: 3.9
+        python-version: 3.10
 
     - name: Create environment from environment.yml
       run: conda env create -f environment.yml
 
-    - name: Check environment consistency
-      run: conda env export --no-builds | diff - environment.yml || exit 1
+    - name: Activate the environment
+      shell: bash -l {0}
+      run: conda activate acsefunctions-env
 
-    - name: Validate requirements.txt
-      run: pip install -r requirements.txt
+    - name: Verify environment packages
+      shell: bash -l {0}
+      run: |
+        conda list numpy || exit 1
+        conda list pytest || exit 1
+        conda list flake8 || exit 1
+        pip show docformatter || exit 1

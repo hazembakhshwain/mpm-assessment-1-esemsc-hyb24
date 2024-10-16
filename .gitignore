@@ -1,0 +1,8 @@
+# Ignore Python bytecode and cache directories anywhere in the repository
+**/__pycache__/
+**/*.py[cod]
+
+# Ignore cache files from other tools
+**/*.cache
+**/*.log
+**/.cache/
