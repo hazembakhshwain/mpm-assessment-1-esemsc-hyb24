@@ -1,0 +1,16 @@
+-e git+https://github.com/ese-ada-lovelace-2024/mpm-assessment-1-esemsc-hyb24.git@091fbd520ce7b8324895ed7e926b779b1510c5ee#egg=acsefunctions
+charset-normalizer==3.4.0
+click==8.1.7
+iniconfig==2.0.0
+mccabe==0.7.0
+mypy-extensions==1.0.0
+numpy==2.1.2
+pathspec==0.12.1
+pluggy==1.5.0
+pycodestyle==2.12.1
+pyflakes==3.2.0
+pytest==8.3.3
+scipy==1.14.1
+setuptools==75.1.0
+untokenize==0.1.1
+wheel==0.44.0
