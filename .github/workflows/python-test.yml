@@ -74,4 +74,3 @@ jobs:
         conda list numpy || exit 1
         conda list pytest || exit 1
         conda list flake8 || exit 1
-        pip show docformatter || exit 1
