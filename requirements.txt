@@ -16,4 +16,4 @@ scipy==1.14.1
 setuptools==75.1.0
 untokenize==0.1.1
 wheel==0.44.0
--e git+https://github.com/ese-ada-lovelace-2024/mpm-assessment-1-esemsc-hyb24.git@091fbd520ce7b8324895ed7e926b779b1510c5ee#egg=acsefunctions
+-e .
