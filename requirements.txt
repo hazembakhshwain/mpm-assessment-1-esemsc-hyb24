@@ -1,7 +1,5 @@
-black
-flake8
-numpy
-pytest
-scipy
-setuptools
+black==24.10.0
+docformatter==1.7.5
+pydocstyle==6.3.0
+pytest-pydocstyle==2.4.0
 -e .
