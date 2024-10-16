@@ -1,19 +1,7 @@
-black==24.10.0
-charset-normalizer==3.4.0
-click==8.1.7
-docformatter==1.7.5
-flake8==7.1.1
-iniconfig==2.0.0
-mccabe==0.7.0
-mypy-extensions==1.0.0
-numpy==2.1.2
-pathspec==0.12.1
-pluggy==1.5.0
-pycodestyle==2.12.1
-pyflakes==3.2.0
-pytest==8.3.3
-scipy==1.14.1
-setuptools==75.1.0
-untokenize==0.1.1
-wheel==0.44.0
+black
+flake8
+numpy
+pytest
+scipy
+setuptools
 -e .
