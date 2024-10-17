@@ -1,9 +1,12 @@
-name: Update Sphinx Documentation
+name: Build and Commit Sphinx Documentation
 
 on:
   push:
     branches:
-      - master  # Adjust this if your branch name is different
+      - master  # Adjust if needed for your branch
+  pull_request:
+    branches:
+      - master  # Adjust if needed for your branch
 
 jobs:
   build-docs:
@@ -30,12 +33,12 @@ jobs:
         make html
 
     - name: Commit and push documentation changes
-      if: ${{ github.ref == 'refs/heads/master' }}
+      if: ${{ github.event_name == 'pull_request' || github.ref == 'refs/heads/master' }}
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "github-actions@github.com"
+        git config user.name "GitHub Actions"
+        git config user.email "github-actions@github.com"
         git add docs/build/html
         git commit -m "Auto-update Sphinx documentation"
         git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
