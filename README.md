@@ -91,7 +91,7 @@ To explore the package’s functions and see detailed comparisons with NumPy/Sci
 jupyter notebook
 ```
 
-Open the `documentation.ipynbb` notebook to see usage examples, comparisons, and plots.
+Open the `documentation.ipynb` notebook to see usage examples, comparisons, and plots.
 
 ---
 
@@ -112,7 +112,7 @@ This will test all the functions, including comparisons to NumPy/SciPy counterpa
 We have set up a GitHub Actions workflow that automatically tests the Jupyter notebook upon each commit or pull request. You can also manually test the notebook using `nbconvert`:
 
 ```bash
-jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 documentation.ipynbb
+jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 documentation.ipynb
 ```
 
 ---
