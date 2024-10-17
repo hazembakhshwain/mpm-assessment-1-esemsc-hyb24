@@ -35,8 +35,7 @@ jobs:
     - name: Install LaTeX and latexmk
       run: |
         sudo apt-get update
-        sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended latexmk
-        sudo apt-get install -y texlive-full  # Ensure full LaTeX support
+        sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended latexmk xindy
 
     - name: Build Sphinx HTML documentation
       run: |
