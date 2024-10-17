@@ -123,9 +123,15 @@ Detailed documentation for each function is available via Sphinx. You can build 
 
 ```bash
 make html
+make latex
+make latexpdf
 ```
 
 Once built, open `docs/_build/html/index.html` in your browser to view the documentation.
+
+### Documentation PDF
+
+The full generated Sphinx documentation is also available as a PDF. [Click here to view the documentation PDF](./docs/build/latex/ACSEFunctions.pdf).
 
 ### Assessment PDF
 
