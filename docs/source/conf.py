@@ -38,12 +38,13 @@ extensions = [
     'sphinx.ext.viewcode',
 ]
 
-# Add this section at the bottom of your conf.py
+latex_engine = 'xelatex'
 latex_elements = {
     'papersize': 'a4paper',
     'pointsize': '10pt',
     'classoptions': ',oneside',  # Use oneside to reduce blank pages
     'babel': r'\usepackage[english]{babel}',  # Ensure consistent language settings
+    'preamble': r'\usepackage{unicode-math}',
 }
 
 latex_documents = [
