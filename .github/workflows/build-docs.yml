@@ -8,6 +8,9 @@ on:
     branches:
       - master  # Adjust if needed for your branch
 
+permissions:
+  contents: write  # This explicitly grants write access to repository contents
+
 jobs:
   build-docs:
     runs-on: ubuntu-latest
