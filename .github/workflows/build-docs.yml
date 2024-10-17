@@ -37,8 +37,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       run: |
-        git config user.name "GitHub Actions"
-        git config user.email "github-actions@github.com"
         git add docs/build/html
         git commit -m "Auto-update Sphinx documentation"
         git push
