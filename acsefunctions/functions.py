@@ -332,7 +332,7 @@ def gamma(z):
 
 
 def bessel(alpha, x, N=100):
-    """Compute the Bessel function J_alpha(x) using series expansion.
+    """Compute the Bessel function J_alpha(x) using the series expansion.
 
     This function approximates the Bessel function using a truncated
     series expansion
