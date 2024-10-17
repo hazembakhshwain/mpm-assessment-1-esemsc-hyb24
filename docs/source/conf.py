@@ -45,6 +45,7 @@ latex_elements = {
     'classoptions': ',oneside',  # Use oneside to reduce blank pages
     'babel': r'\usepackage[english]{babel}',  # Ensure consistent language settings
     'preamble': r'\usepackage{unicode-math}',
+    'latexmk': r'makeindex',  # Set indexing to use makeindex instead of xindy
 }
 
 latex_documents = [
