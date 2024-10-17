@@ -1,0 +1,57 @@
+\begin{sphinxtheindex}
+\let\lettergroup\sphinxstyleindexlettergroup
+\let\lettergroupDefault\sphinxstyleindexlettergroupDefault
+\let\spxpagem\sphinxstyleindexpagemain
+\let\spxentry\sphinxstyleindexentry
+\let\spxextra\sphinxstyleindexextra
+
+
+  \lettergroup{A}
+  \item \spxentry{acsefunctions}
+    \subitem \spxentry{module}, \hyperpage{6}
+  \item \spxentry{acsefunctions.functions}
+    \subitem \spxentry{module}, \hyperpage{2}
+
+  \indexspace
+
+  \lettergroup{B}
+  \item \spxentry{bessel()}\spxextra{in module acsefunctions.functions}, \hyperpage{2}
+
+  \indexspace
+
+  \lettergroup{C}
+  \item \spxentry{cosh()}\spxextra{in module acsefunctions.functions}, \hyperpage{2}
+
+  \indexspace
+
+  \lettergroup{E}
+  \item \spxentry{exp()}\spxextra{in module acsefunctions.functions}, \hyperpage{3}
+
+  \indexspace
+
+  \lettergroup{F}
+  \item \spxentry{fact()}\spxextra{in module acsefunctions.functions}, \hyperpage{4}
+
+  \indexspace
+
+  \lettergroup{G}
+  \item \spxentry{gamma()}\spxextra{in module acsefunctions.functions}, \hyperpage{4}
+
+  \indexspace
+
+  \lettergroup{M}
+  \item \spxentry{module}
+    \subitem \spxentry{acsefunctions}, \hyperpage{6}
+    \subitem \spxentry{acsefunctions.functions}, \hyperpage{2}
+
+  \indexspace
+
+  \lettergroup{S}
+  \item \spxentry{sinh()}\spxextra{in module acsefunctions.functions}, \hyperpage{4}
+
+  \indexspace
+
+  \lettergroup{T}
+  \item \spxentry{tanh()}\spxextra{in module acsefunctions.functions}, \hyperpage{5}
+
+\end{sphinxtheindex}

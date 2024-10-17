@@ -9,36 +9,48 @@
 \fi
 %% let collapsible pdf bookmarks panel have high depth per default
 \PassOptionsToPackage{bookmarksdepth=5}{hyperref}
+%% turn off hyperref patch of \index as sphinx.xdy xindy module takes care of
+%% suitable \hyperpage mark-up, working around hyperref-xindy incompatibility
+\PassOptionsToPackage{hyperindex=false}{hyperref}
+%% memoir class requires extra handling
+\makeatletter\@ifclassloaded{memoir}
+{\ifdefined\memhyperindexfalse\memhyperindexfalse\fi}{}\makeatother
 
 \PassOptionsToPackage{booktabs}{sphinx}
 \PassOptionsToPackage{colorrows}{sphinx}
 
 \PassOptionsToPackage{warn}{textcomp}
-\usepackage[utf8]{inputenc}
-\ifdefined\DeclareUnicodeCharacter
-% support both utf8 and utf8x syntaxes
-  \ifdefined\DeclareUnicodeCharacterAsOptional
-    \def\sphinxDUC#1{\DeclareUnicodeCharacter{"#1}}
-  \else
-    \let\sphinxDUC\DeclareUnicodeCharacter
-  \fi
-  \sphinxDUC{00A0}{\nobreakspace}
-  \sphinxDUC{2500}{\sphinxunichar{2500}}
-  \sphinxDUC{2502}{\sphinxunichar{2502}}
-  \sphinxDUC{2514}{\sphinxunichar{2514}}
-  \sphinxDUC{251C}{\sphinxunichar{251C}}
-  \sphinxDUC{2572}{\textbackslash}
-\fi
+
+\catcode`^^^^00a0\active\protected\def^^^^00a0{\leavevmode\nobreak\ }
 \usepackage{cmap}
-\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\defaultfontfeatures[\rmfamily,\sffamily,\ttfamily]{}
 \usepackage{amsmath,amssymb,amstext}
 \usepackage[english]{babel}
 
 
 
-\usepackage{tgtermes}
-\usepackage{tgheros}
-\renewcommand{\ttdefault}{txtt}
+\setmainfont{FreeSerif}[
+  Extension      = .otf,
+  UprightFont    = *,
+  ItalicFont     = *Italic,
+  BoldFont       = *Bold,
+  BoldItalicFont = *BoldItalic
+]
+\setsansfont{FreeSans}[
+  Extension      = .otf,
+  UprightFont    = *,
+  ItalicFont     = *Oblique,
+  BoldFont       = *Bold,
+  BoldItalicFont = *BoldOblique,
+]
+\setmonofont{FreeMono}[Scale=0.9,
+  Extension      = .otf,
+  UprightFont    = *,
+  ItalicFont     = *Oblique,
+  BoldFont       = *Bold,
+  BoldItalicFont = *BoldOblique,
+]
 
 
 
@@ -61,7 +73,7 @@
 \usepackage{sphinxmessages}
 \setcounter{tocdepth}{1}
 
-
+\usepackage{unicode-math}
 
 \title{ACSEFunctions Documentation}
 \date{Oct 17, 2024}
@@ -125,15 +137,15 @@ up to N terms.
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{alpha}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} The order of the Bessel function (can be any real number).
+\sphinxstyleliteralstrong{\sphinxupquote{alpha}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) – The order of the Bessel function (can be any real number).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) \textendash{} The value(s) for which to compute the Bessel function.
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) – The value(s) for which to compute the Bessel function.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} The number of terms in the series to use for the approximation
+\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) – The number of terms in the series to use for the approximation
 (default is 100).
 
 \end{itemize}
@@ -151,7 +163,7 @@ np.ndarray
 
 \sphinxAtStartPar
 The Bessel function of the first kind is defined as:
-J\_alpha(x) = Σ (from m=0 to \(\infty\)) {[}(\sphinxhyphen{}1)\textasciicircum{}m / (m! * Γ(m + α + 1)){]}
+J\_alpha(x) = Σ (from m=0 to ∞) {[}(\sphinxhyphen{}1)\textasciicircum{}m / (m! * Γ(m + α + 1)){]}
 * (x/2)\textasciicircum{}(2m + α)
 This implementation uses a truncated series expansionto approximate the
 result.
@@ -180,12 +192,12 @@ element\sphinxhyphen{}wise for arrays.
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) \textendash{} The input value(s) for which to compute cosh(x). Can be a scalar or a
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) – The input value(s) for which to compute cosh(x). Can be a scalar or a
 NumPy array.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} The number of terms in the Taylor series to use for the approximation
+\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) – The number of terms in the Taylor series to use for the approximation
 (default is 100). Higher values increase accuracy but also
 increase computation time.
 
@@ -268,12 +280,12 @@ element\sphinxhyphen{}wise for arrays.
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) \textendash{} The input value(s) for which to compute e\textasciicircum{}x.
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) – The input value(s) for which to compute e\textasciicircum{}x.
 Can be a scalar or a NumPy array.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} The number of terms in the Taylor series to use for the approximation
+\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) – The number of terms in the Taylor series to use for the approximation
 (default is 100).
 Higher values increase accuracy but also increase computation time.
 
@@ -339,7 +351,7 @@ Calculate the factorial of a non\sphinxhyphen{}negative integer or NumPyarray.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} The non\sphinxhyphen{}negative integer or array of integers for which the factorial
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) – The non\sphinxhyphen{}negative integer or array of integers for which the factorial
 is computed.
 
 \sphinxlineitem{Returns}
@@ -391,7 +403,7 @@ and efficiency in computing the gamma function.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{z}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} The input value for which to compute the gamma function.
+\sphinxstyleliteralstrong{\sphinxupquote{z}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) – The input value for which to compute the gamma function.
 Should be positive.
 
 \sphinxlineitem{Returns}
@@ -438,12 +450,12 @@ element\sphinxhyphen{}wise for arrays.
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) \textendash{} The input value(s) for which to compute sinh(x). Can be a scalar or a
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) – The input value(s) for which to compute sinh(x). Can be a scalar or a
 NumPy array.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} The number of terms in the Taylor series to use for the approximation
+\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) – The number of terms in the Taylor series to use for the approximation
 (default is 100). Higher values increase accuracy but also increase
 computation time.
 
@@ -527,12 +539,12 @@ computing the result element\sphinxhyphen{}wise for arrays.
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) \textendash{} The input value(s) for which to compute tanh(x). Can be a scalar or a
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{array\sphinxhyphen{}like}}) – The input value(s) for which to compute tanh(x). Can be a scalar or a
 NumPy array.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} The number of terms in the Taylor series used for sinh(x) and cosh(x)
+\sphinxstyleliteralstrong{\sphinxupquote{N}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) – The number of terms in the Taylor series used for sinh(x) and cosh(x)
 approximations (default is 100). Higher values increase accuracy but
 also increase computation time.
 

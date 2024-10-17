@@ -1,11 +1,11 @@
-\indexentry{module@\spxentry{module}!acsefunctions.functions@\spxentry{acsefunctions.functions}|hyperpage}{2}
-\indexentry{acsefunctions.functions@\spxentry{acsefunctions.functions}!module@\spxentry{module}|hyperpage}{2}
-\indexentry{bessel() (in module acsefunctions.functions)@\spxentry{bessel()}\spxextra{in module acsefunctions.functions}|hyperpage}{2}
-\indexentry{cosh() (in module acsefunctions.functions)@\spxentry{cosh()}\spxextra{in module acsefunctions.functions}|hyperpage}{2}
-\indexentry{exp() (in module acsefunctions.functions)@\spxentry{exp()}\spxextra{in module acsefunctions.functions}|hyperpage}{3}
-\indexentry{fact() (in module acsefunctions.functions)@\spxentry{fact()}\spxextra{in module acsefunctions.functions}|hyperpage}{4}
-\indexentry{gamma() (in module acsefunctions.functions)@\spxentry{gamma()}\spxextra{in module acsefunctions.functions}|hyperpage}{4}
-\indexentry{sinh() (in module acsefunctions.functions)@\spxentry{sinh()}\spxextra{in module acsefunctions.functions}|hyperpage}{4}
-\indexentry{tanh() (in module acsefunctions.functions)@\spxentry{tanh()}\spxextra{in module acsefunctions.functions}|hyperpage}{5}
-\indexentry{module@\spxentry{module}!acsefunctions@\spxentry{acsefunctions}|hyperpage}{6}
-\indexentry{acsefunctions@\spxentry{acsefunctions}!module@\spxentry{module}|hyperpage}{6}
+\indexentry{module@\spxentry{module}!acsefunctions.functions@\spxentry{acsefunctions.functions}}{2}
+\indexentry{acsefunctions.functions@\spxentry{acsefunctions.functions}!module@\spxentry{module}}{2}
+\indexentry{bessel() (in module acsefunctions.functions)@\spxentry{bessel()}\spxextra{in module acsefunctions.functions}}{2}
+\indexentry{cosh() (in module acsefunctions.functions)@\spxentry{cosh()}\spxextra{in module acsefunctions.functions}}{2}
+\indexentry{exp() (in module acsefunctions.functions)@\spxentry{exp()}\spxextra{in module acsefunctions.functions}}{3}
+\indexentry{fact() (in module acsefunctions.functions)@\spxentry{fact()}\spxextra{in module acsefunctions.functions}}{4}
+\indexentry{gamma() (in module acsefunctions.functions)@\spxentry{gamma()}\spxextra{in module acsefunctions.functions}}{4}
+\indexentry{sinh() (in module acsefunctions.functions)@\spxentry{sinh()}\spxextra{in module acsefunctions.functions}}{4}
+\indexentry{tanh() (in module acsefunctions.functions)@\spxentry{tanh()}\spxextra{in module acsefunctions.functions}}{5}
+\indexentry{module@\spxentry{module}!acsefunctions@\spxentry{acsefunctions}}{6}
+\indexentry{acsefunctions@\spxentry{acsefunctions}!module@\spxentry{module}}{6}
