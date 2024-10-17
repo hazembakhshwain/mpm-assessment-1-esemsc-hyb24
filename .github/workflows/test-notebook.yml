@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - master  # Adjust if you use a different branch (e.g., main)
+      - dev
   pull_request:
     branches:
       - master
+      - dev
 
 jobs:
   test-notebook:
