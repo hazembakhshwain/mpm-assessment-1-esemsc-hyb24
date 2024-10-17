@@ -32,7 +32,7 @@ jobs:
         pip install -r requirements.txt
         pip install sphinx sphinx-rtd-theme
 
-    - name: Install LaTeX
+    - name: Install LaTeX and latexmk
       run: |
         sudo apt-get update
         sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended latexmk
@@ -45,6 +45,7 @@ jobs:
     - name: Build Sphinx PDF documentation
       run: |
         cd docs
+        mkdir -p build/latex
         make latexpdf
 
     - name: Commit and push documentation changes
